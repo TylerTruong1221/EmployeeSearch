@@ -9,6 +9,7 @@ int main(void) {
     //defined in employeeSearchOne.c
     PtrToEmployee searchEmployeeByNumber(const Employee table[], int sizeTable, long numberToFind);
     PtrToEmployee searchEmployeeByName(const Employee table[], int sizeTable, char *nameToFind);
+    PtrToEmployee searchEmployeeByPhone(const Employee table[], int sizeTable, char *phoneToFind);
 
     //definted in EmployeeTable.c
     extern Employee EmployeeTable[];
@@ -30,5 +31,11 @@ int main(void) {
     else
         printf("Employee Tony Bobcat is NOT found in the record\n");
     
+    matchPtr = searchEmployeeByPhone(EmployeeTable, EmployeeTableEntries, "123-456-7899");
+    if (matchPtr != NULL)
+        printf("Employee phone number 123-456-7899 is in record %ld\n", matchPtr - EmployeeTable);
+    else
+        printf("Employee phone number is NOT found in the record\n");
+
     return EXIT_SUCCESS;
 }
