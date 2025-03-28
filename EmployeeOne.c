@@ -1,4 +1,5 @@
 #include <string.h>
+#include <math.h>
 #include "Employee.h"
 
 PtrToEmployee searchEmployeeByNumber(PtrToConstEmployee ptr, int tableSize, long targetNumber) {
@@ -26,4 +27,14 @@ PtrToEmployee searchEmployeeByPhone(PtrToConstEmployee ptr, int tableSize, char 
             return (PtrToEmployee) ptr;
     }
     return NULL;
+}
+
+PtrToEmployee searchEmployeeBySalary(PtrToConstEmployee ptr, int tableSize, double *targetSalary) {
+    const PtrToConstEmployee endPtr = ptr + tableSize;
+    for(; ptr<endPtr; ptr++) {
+        if(fabs(ptr->salary - *targetSalary) < 0.0001){
+            return (PtrToEmployee) ptr;
+    }
+    return NULL;
+    }
 }
